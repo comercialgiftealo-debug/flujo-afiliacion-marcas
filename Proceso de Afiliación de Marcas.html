@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<!-- saved from url=(0201)file:///C:/Users/KarlaBazan/OneDrive%20-%20Promotick%20SAC/RESPALDO/RESPALDO/Zona%20Cards/Alianzas%20Per%C3%BA/1.%20Info%20de%20Marcas/Kit%20de%20Afiliaci%C3%B3n%20Giftealo/flujo-afiliacion-marcas.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proceso de Afiliación de Marcas</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f0f13;
+    --surface: #1a1a22;
+    --surface2: #22222e;
+    --border: #2e2e3e;
+    --accent: #7c6af7;
+    --accent2: #a78bfa;
+    --green: #34d399;
+    --yellow: #fbbf24;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --pink: #f472b6;
+    --orange: #fb923c;
+    --text: #e8e8f0;
+    --text2: #9090a8;
+    --text3: #5a5a72;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px 24px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    background: rgba(124,106,247,0.12);
+    border: 1px solid rgba(124,106,247,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #e8e8f0 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header p {
+    font-size: 14px;
+    color: var(--text2);
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* FLOW LAYOUT */
+  .flow {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* CONNECTOR */
+  .connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    position: relative;
+  }
+  .connector::before {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
+    transform: translateX(-50%);
+  }
+  .connector-arrow {
+    width: 22px; height: 22px;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1;
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  /* PHASE CARD */
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .phase:hover {
+    box-shadow: 0 0 0 1px var(--accent), 0 8px 40px rgba(124,106,247,0.08);
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .phase.open .phase-header {
+    border-bottom-color: var(--border);
+  }
+
+  .phase-num {
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .phase-title-wrap { flex: 1; }
+  .phase-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .phase-subtitle {
+    font-size: 12px;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+
+  .phase-toggle {
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    color: var(--text3);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .phase.open .phase-toggle { transform: rotate(180deg); }
+
+  .phase-body {
+    display: none;
+    padding: 20px 22px;
+  }
+  .phase.open .phase-body { display: block; }
+
+  /* PARALLEL INDICATOR */
+  .parallel-banner {
+    background: rgba(251,191,36,0.08);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 8px;
+    padding: 8px 13px;
+    font-size: 12px;
+    color: var(--yellow);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+
+  /* TASKS */
+  .tasks { display: flex; flex-direction: column; gap: 10px; }
+
+  .task {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 15px;
+    border-left: 3px solid transparent;
+  }
+
+  .task-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+  .task-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .task-main { flex: 1; }
+  .task-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.35;
+  }
+  .task-to {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+  .task-to span {
+    color: var(--accent2);
+    font-weight: 500;
+  }
+
+  .task-details {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+  .task.expanded .task-details { display: block; }
+  .task-expand-btn {
+    background: none;
+    border: none;
+    color: var(--text3);
+    font-size: 11px;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .task-expand-btn:hover { color: var(--accent2); }
+
+  .detail-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .detail-list li {
+    font-size: 12px;
+    color: var(--text2);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .detail-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text3);
+    font-size: 10px;
+  }
+  .detail-list li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .detail-list li .email-tag {
+    background: rgba(124,106,247,0.12);
+    color: var(--accent2);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: monospace;
+  }
+
+  /* DOCS LIST */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .doc-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .doc-item .doc-icon { font-size: 14px; flex-shrink: 0; }
+
+  /* PARALLEL SECTION */
+  .parallel-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .parallel-header-bar {
+    background: rgba(251,191,36,0.07);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--yellow);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .parallel-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .parallel-col {
+    padding: 18px 18px;
+  }
+  .parallel-col:first-child {
+    border-right: 1px solid var(--border);
+  }
+  .parallel-col-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .parallel-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+
+  /* STATUS CHIP */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .chip-purple { background: rgba(124,106,247,0.15); color: var(--accent2); }
+  .chip-green { background: rgba(52,211,153,0.12); color: var(--green); }
+  .chip-yellow { background: rgba(251,191,36,0.12); color: var(--yellow); }
+  .chip-blue { background: rgba(96,165,250,0.12); color: var(--blue); }
+  .chip-pink { background: rgba(244,114,182,0.12); color: var(--pink); }
+  .chip-red { background: rgba(248,113,113,0.12); color: var(--red); }
+  .chip-orange { background: rgba(251,146,60,0.12); color: var(--orange); }
+
+  /* NOTE BOX */
+  .note-box {
+    background: rgba(96,165,250,0.06);
+    border: 1px solid rgba(96,165,250,0.18);
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 12px;
+    color: var(--text2);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .note-box strong { color: var(--blue); }
+
+  /* FINAL STEPS */
+  .final-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 20px 14px 50px; }
+    .parallel-cols { grid-template-columns: 1fr; }
+    .parallel-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    .docs-grid { grid-template-columns: 1fr; }
+    .final-steps { grid-template-columns: 1fr; }
+    .header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">Giftealo · Afiliaciones</div>
+  <h1>Proceso de Afiliación de Marcas</h1>
+  <p>Flujo interno · Haz clic en cada etapa para ver el detalle</p>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div> Diseño</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Gerencia / Legal</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> Contabilidad</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div> Acción paralela</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--pink)"></div> Operaciones</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> Compras / NetSuite</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Activación</div>
+</div>
+
+<div class="flow">
+
+  <!-- PASO 1 -->
+  <div class="phase open" id="ph1">
+    <div class="phase-header" onclick="togglePhase(&#39;ph1&#39;)">
+      <div class="phase-num" style="background:rgba(124,106,247,0.15);color:var(--accent2)">1</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Solicitud de documentos al comercio</div>
+        <div class="phase-subtitle">Recibir todo lo necesario antes de iniciar coordinaciones</div>
+      </div>
+      <div class="chip chip-purple">Comercio</div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="docs-grid">
+        <div class="doc-item"><span class="doc-icon">📄</span> Contrato de afiliación firmado</div>
+        <div class="doc-item"><span class="doc-icon">📋</span> Ficha de afiliación completa</div>
+        <div class="doc-item"><span class="doc-icon">🪪</span> Ficha RUC</div>
+        <div class="doc-item"><span class="doc-icon">🖼️</span> Logotipo PNG o AI (alta calidad)</div>
+        <div class="doc-item" style="grid-column:1/-1"><span class="doc-icon">📸</span> 3–4 fotos representativas de local/productos/servicios · preferiblemente horizontales</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- COORDINACIONES INTERNAS + PARALELO -->
+  <div class="parallel-container" id="ph2">
+    <div class="parallel-header-bar" onclick="toggleParallel()">
+      <span>⚡</span>
+      <span>Etapa 2 · Coordinaciones internas — acciones en paralelo</span>
+      <span id="parallel-toggle-icon" style="margin-left:auto;font-size:14px">▾</span>
+    </div>
+    <div id="parallel-body">
+    <div class="parallel-cols">
+      <!-- COL IZQUIERDA: diseño + gerencia -->
+      <div class="parallel-col">
+        <div class="parallel-col-title">
+          <div class="parallel-dot" style="background:var(--accent)"></div>
+          Coordinaciones internas
+        </div>
+        <div class="tasks">
+
+          <!-- Diseño -->
+          <div class="task" id="t1" style="border-left-color:var(--accent)">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(124,106,247,0.15)">🎨</div>
+              <div class="task-main">
+                <div class="task-title">Solicitar arte a Diseño</div>
+                <div class="task-to">→ <span>mmuic@promotick.com</span></div>
+              </div>
+            </div>
+            <button class="task-expand-btn" onclick="toggleTask(&#39;t1&#39;)">Ver detalles ▾</button>
+            <div class="task-details">
+              <ul class="detail-list">
+                <li>Adjuntar <strong>logo</strong> e <strong>imagen de background</strong></li>
+                <li>Actualizar el <strong>Excel de seguimiento</strong> — pestaña Leyendas, cuadro de puntos a considerar</li>
+                <li>Si es <strong>giftcard de experiencia</strong>: agregar la frase correspondiente</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Gerencia -->
+          <div class="task" id="t2" style="border-left-color:var(--green)">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(52,211,153,0.12)">✍️</div>
+              <div class="task-main">
+                <div class="task-title">Solicitar contrato firmado con Gerencia</div>
+                <div class="task-to">→ <span>adelascasas@promotick.com</span></div>
+              </div>
+            </div>
+            <button class="task-expand-btn" onclick="toggleTask(&#39;t2&#39;)">Ver detalles ▾</button>
+            <div class="task-details">
+              <ul class="detail-list">
+                <li>Adjuntar el <strong>contrato</strong></li>
+                <li>Indicar el <strong>giro del negocio</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contabilidad -->
+          <div class="task" id="t3" style="border-left-color:var(--blue)">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(96,165,250,0.12)">🔢</div>
+              <div class="task-main">
+                <div class="task-title">Solicitar código cliente a Contabilidad</div>
+                <div class="task-to">→ <span>dmarin@promotick.com</span></div>
+              </div>
+            </div>
+            <button class="task-expand-btn" onclick="toggleTask(&#39;t3&#39;)">Ver detalles ▾</button>
+            <div class="task-details">
+              <ul class="detail-list">
+                <li>Adjuntar <strong>ficha de afiliación</strong> o RUC con razón social</li>
+                <li>Indicar el <strong>correo para envío de facturas</strong></li>
+                <li>Cuando te respondan: <strong>sumar el código en la ficha del comercio</strong></li>
+              </ul>
+              <div class="note-box" style="margin-top:8px"><strong>⚠️ Necesario</strong> — El código cliente es requisito para obtener las credenciales de Valid Code antes de activar la marca.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COL DERECHA: Capacitación -->
+      <div class="parallel-col">
+        <div class="parallel-col-title">
+          <div class="parallel-dot" style="background:var(--yellow)"></div>
+          Simultáneo · Capacitación al comercio
+        </div>
+        <div class="tasks">
+
+          <div class="task" id="t4" style="border-left-color:var(--yellow)">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(251,191,36,0.12)">🎓</div>
+              <div class="task-main">
+                <div class="task-title">Coordinar capacitación con el comercio</div>
+                <div class="task-to">→ <span>Equipo interno / Operaciones</span></div>
+              </div>
+            </div>
+            <button class="task-expand-btn" onclick="toggleTask(&#39;t4&#39;)">Ver detalles ▾</button>
+            <div class="task-details">
+              <ul class="detail-list">
+                <li>Realizar la sesión de capacitación</li>
+                <li><strong>Al cierre</strong>: enviar correo con el speech de cierre al comercio</li>
+                <li>Adjuntar: <strong>Capacitación Valid Code</strong>, <strong>Proceso contable</strong>, <strong>Credenciales</strong></li>
+              </ul>
+              <div class="note-box" style="margin-top:8px"><strong>📌 Nota:</strong> Si Operaciones ya envió los materiales, no es necesario duplicar. Lo importante es que el comercio tenga toda la información <strong>antes de ser activado</strong>.</div>
+            </div>
+          </div>
+
+          <div class="task" id="t5" style="border-left-color:var(--yellow); background:rgba(251,191,36,0.04);">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(251,191,36,0.12)">💡</div>
+              <div class="task-main">
+                <div class="task-title">¿Por qué en paralelo?</div>
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--text2); margin-top:6px; line-height:1.6;">
+              Se necesitan las <strong style="color:var(--yellow)">credenciales de Valid Code</strong> para dar acceso a la marca. Estas dependen del código cliente (Contabilidad). Mientras se tramitan los documentos y el arte, se puede avanzar la capacitación para no perder tiempo.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- PASO 3 - NETSUITE / COMPRAS -->
+  <div class="phase open" id="ph3b">
+    <div class="phase-header" onclick="togglePhase(&#39;ph3b&#39;)">
+      <div class="phase-num" style="background:rgba(251,146,60,0.15);color:var(--orange)">3</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Solicitud a Compras · NetSuite (ERP)</div>
+        <div class="phase-subtitle">Crear o actualizar proveedor y códigos en el sistema</div>
+      </div>
+      <div class="chip chip-orange">Compras</div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="tasks">
+
+        <div class="task" id="tb1" style="border-left-color:var(--orange)">
+          <div class="task-header">
+            <div class="task-icon" style="background:rgba(251,146,60,0.12)">🏢</div>
+            <div class="task-main">
+              <div class="task-title">Crear o actualizar PROVEEDOR en NetSuite</div>
+              <div class="task-to">→ <span>farevalo@promotick.com</span></div>
+            </div>
+          </div>
+          <button class="task-expand-btn" onclick="toggleTask(&#39;tb1&#39;)">Ver detalles ▾</button>
+          <div class="task-details">
+            <ul class="detail-list">
+              <li>Solicitar a Compras la creación o actualización del proveedor en <strong>NetSuite</strong></li>
+              <li>Enviar correo a <span class="email-tag">farevalo@promotick.com</span> con los datos del comercio</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task" id="tb2" style="border-left-color:var(--orange)">
+          <div class="task-header">
+            <div class="task-icon" style="background:rgba(251,146,60,0.12)">📊</div>
+            <div class="task-main">
+              <div class="task-title">Crear CÓDIGOS en NetSuite (ERP)</div>
+              <div class="task-to">→ <span>farevalo@promotick.com</span></div>
+            </div>
+          </div>
+          <button class="task-expand-btn" onclick="toggleTask(&#39;tb2&#39;)">Ver detalles ▾</button>
+          <div class="task-details">
+            <ul class="detail-list">
+              <li>Adjuntar la plantilla Excel <strong>"Malla de creación"</strong> completa</li>
+              <li>Verificar que la malla esté llena correctamente antes de enviar</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- PASO 4 (antes paso 3) -->
+  <div class="phase open" id="ph3">
+    <div class="phase-header" onclick="togglePhase(&#39;ph3&#39;)">
+      <div class="phase-num" style="background:rgba(244,114,182,0.15);color:var(--pink)">4</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Envío de documentación a Operaciones</div>
+        <div class="phase-subtitle">Enviar todo lo recopilado para la creación en sistema</div>
+      </div>
+      <div class="chip chip-pink">Operaciones</div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="tasks">
+        <div class="task" id="t6" style="border-left-color:var(--pink)">
+          <div class="task-header">
+            <div class="task-icon" style="background:rgba(244,114,182,0.12)">📨</div>
+            <div class="task-main">
+              <div class="task-title">Enviar documentación completa</div>
+            </div>
+          </div>
+          <button class="task-expand-btn" onclick="toggleTask(&#39;t6&#39;)">Ver detalles ▾</button>
+          <div class="task-details">
+            <ul class="detail-list">
+              <li><strong>Adjuntar:</strong> Ficha de afiliación · Ficha RUC · Arte</li>
+              <li><strong>Para:</strong> <span class="email-tag">jancajima@promotick.com</span> <span class="email-tag">farevalo@promotick.com</span></li>
+              <li><strong>Con copia:</strong> <span class="email-tag">kbazan@promotick.com</span> <span class="email-tag">jmorales@promotick.com</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- PASO 5 (antes paso 4) -->
+  <div class="phase open" id="ph4">
+    <div class="phase-header" onclick="togglePhase(&#39;ph4&#39;)">
+      <div class="phase-num" style="background:rgba(248,113,113,0.15);color:var(--red)">5</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Activación de la marca</div>
+        <div class="phase-subtitle">Confirmar activación cuando todo esté listo</div>
+      </div>
+      <div class="chip chip-red">Activación</div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="parallel-banner">
+        <span>✅</span>
+        Verificar antes de activar: marca capacitada + información enviada + Operaciones confirma creación en sistema
+      </div>
+
+      <div class="tasks">
+        <div class="task" id="t7" style="border-left-color:var(--red)">
+          <div class="task-header">
+            <div class="task-icon" style="background:rgba(248,113,113,0.12)">🚀</div>
+            <div class="task-main">
+              <div class="task-title">Responder correo de Operaciones · confirmar activación</div>
+            </div>
+          </div>
+          <button class="task-expand-btn" onclick="toggleTask(&#39;t7&#39;)">Ver detalles ▾</button>
+          <div class="task-details">
+            <ul class="detail-list">
+              <li><strong>Agregar al hilo:</strong> <span class="email-tag">fvargas@promotick.com</span> <span class="email-tag">geraldine.a@plazapoints.com</span> <span class="email-tag">ksalazarb@promotick.com</span></li>
+              <li>Detallar si la giftcard es <strong>experiencia</strong> o <strong>nominal</strong></li>
+              <li>Incluir <strong>detalle de la giftcard</strong> para que evalúen en qué otros canales activar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-arrow">↓</div></div>
+
+  <!-- PASO 6–7 (antes paso 5-6) -->
+  <div class="phase open" id="ph56">
+    <div class="phase-header" onclick="togglePhase(&#39;ph56&#39;)">
+      <div class="phase-num" style="background:rgba(52,211,153,0.15);color:var(--green)">6–7</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Cierre administrativo y bienvenida</div>
+        <div class="phase-subtitle">Checklist + aviso a Marketing</div>
+      </div>
+      <div class="chip chip-green">Cierre</div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="final-steps">
+
+        <div class="task" id="t8" style="border-left-color:var(--green)">
+          <div class="task-header">
+            <div class="task-icon" style="background:rgba(52,211,153,0.12)">☑️</div>
+            <div class="task-main">
+              <div class="task-title">Completar checklist de Marcas</div>
+              <div class="task-to">Presentación 2026 · Avance de Afiliación</div>
+            </div>
+          </div>
+          <button class="task-expand-btn" onclick="toggleTask(&#39;t8&#39;)">Ver detalles ▾</button>
+          <div class="task-details">
+            <ul class="detail-list">
+              <li>Completar todos los campos del checklist</li>
+              <li><strong>Borrar la línea</strong> en Avance de Afiliación solo cuando todo esté OK, incluyendo el <strong>Registro en Giftealo</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task" id="t9" style="border-left-color:var(--pink)">
+          <div class="task-header">
+            <div class="task-icon" style="background:rgba(244,114,182,0.12)">📣</div>
+            <div class="task-main">
+              <div class="task-title">Avisar a Marketing · Bienvenida en RRSS</div>
+              <div class="task-to">→ <span>Equipo de Marketing</span></div>
+            </div>
+          </div>
+          <button class="task-expand-btn" onclick="toggleTask(&#39;t9&#39;)">Ver detalles ▾</button>
+          <div class="task-details">
+            <ul class="detail-list">
+              <li>Notificar a Marketing para publicación de bienvenida</li>
+              <li>Si es <strong>marca power</strong>: mencionarlo con anticipación para que puedan trabajarlo y <strong>empalmar lo antes posible</strong></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function togglePhase(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+  }
+  function toggleParallel() {
+    const body = document.getElementById('parallel-body');
+    const icon = document.getElementById('parallel-toggle-icon');
+    const isOpen = body.style.display !== 'none';
+    body.style.display = isOpen ? 'none' : '';
+    icon.textContent = isOpen ? '▸' : '▾';
+  }
+  function toggleTask(id) {
+    const task = document.getElementById(id);
+    const btn = task.querySelector('.task-expand-btn');
+    task.classList.toggle('expanded');
+    btn.textContent = task.classList.contains('expanded') ? 'Ocultar ▴' : 'Ver detalles ▾';
+  }
+
+  // Open all phases on load
+  document.querySelectorAll('.phase').forEach(p => p.classList.add('open'));
+</script>
+
+
+</body></html>
