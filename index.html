@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flujos de Afiliación - Giftealo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a22;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --text: #e8e8f0;
+      --text2: #9090a8;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .header {
+      margin-bottom: 3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1.5px solid var(--accent);
+      color: var(--accent2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header p {
+      color: var(--text2);
+      font-size: 1rem;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .link-card {
+      background: var(--surface);
+      border: 1px solid rgba(124, 106, 247, 0.2);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .link-card:hover {
+      border-color: var(--accent);
+      background: rgba(124, 106, 247, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .flag {
+      font-size: 3rem;
+    }
+
+    .link-card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .link-card p {
+      color: var(--text2);
+      font-size: 0.9rem;
+    }
+
+    .cta-text {
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text2);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.8rem; }
+      .links { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="badge">Giftealo · Afiliaciones</div>
+    <h1>Procesos de Afiliación</h1>
+    <p>Selecciona el país para ver el flujo</p>
+  </div>
+
+  <div class="links">
+    <a href="./Proceso%20de%20Afiliacion%20de%20Marcas.html" class="link-card">
+      <div class="flag">🇵🇪</div>
+      <h2>Perú</h2>
+      <p>Flujo de afiliación de marcas</p>
+    </a>
+
+    <a href="./Afiliacion_Marcas_Ecuador.html" class="link-card">
+      <div class="flag">🇪🇨</div>
+      <h2>Ecuador</h2>
+      <p>Flujo de afiliación de marcas</p>
+    </a>
+  </div>
+
+  <div class="cta-text">
+    <p>📌 Flujo interno · Haz clic en cada etapa para ver el detalle</p>
+  </div>
+</div>
+
+</body>
+</html>
