@@ -35,7 +35,6 @@
       padding: 32px 24px 60px;
     }
 
-    /* HEADER */
     .header {
       text-align: center;
       margin-bottom: 48px;
@@ -67,7 +66,6 @@
       color: var(--text2);
     }
 
-    /* LEGEND */
     .legend {
       display: flex;
       gap: 20px;
@@ -88,7 +86,6 @@
       flex-shrink: 0;
     }
 
-    /* FLOW LAYOUT */
     .flow {
       max-width: 1000px;
       margin: 0 auto;
@@ -97,7 +94,6 @@
       gap: 0;
     }
 
-    /* CONNECTOR */
     .connector {
       display: flex;
       justify-content: center;
@@ -105,7 +101,6 @@
       color: var(--text3);
     }
 
-    /* PHASE (step cards) */
     .phase {
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -176,83 +171,13 @@
       border-top: 1px solid var(--border);
     }
 
-    /* DOCS GRID */
-    .docs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .doc-item {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 9px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      color: var(--text2);
-    }
-    .doc-item .doc-icon { font-size: 14px; flex-shrink: 0; }
-
-    /* PARALLEL SECTION */
-    .parallel-container {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-    .parallel-header-bar {
-      background: rgba(251,191,36,0.07);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--yellow);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-    .parallel-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .parallel-col {
-      padding: 18px 18px;
-    }
-    .parallel-col:first-child {
-      border-right: 1px solid var(--border);
-    }
-    .parallel-col-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text3);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .parallel-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-    }
-
-    /* TASKS */
-    .tasks { display: flex; flex-direction: column; gap: 10px; }
-
     .task {
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 13px 15px;
       border-left: 3px solid transparent;
+      margin-bottom: 10px;
     }
 
     .task-header {
@@ -343,7 +268,6 @@
       font-family: monospace;
     }
 
-    /* NOTE BOX */
     .note-box {
       background: rgba(96,165,250,0.06);
       border: 1px solid rgba(96,165,250,0.18);
@@ -358,9 +282,6 @@
 
     @media (max-width: 768px) {
       body { padding: 20px 14px 50px; }
-      .parallel-cols { grid-template-columns: 1fr; }
-      .parallel-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-      .docs-grid { grid-template-columns: 1fr; }
       .header h1 { font-size: 22px; }
     }
   </style>
@@ -396,105 +317,233 @@
       <div class="phase-toggle">▾</div>
     </div>
     <div class="phase-body">
-      <div class="docs-grid">
-        <div class="doc-item"><span class="doc-icon">📄</span> Contrato de afiliación firmado</div>
-        <div class="doc-item"><span class="doc-icon">📋</span> Ficha de afiliación completa</div>
-        <div class="doc-item"><span class="doc-icon">🪪</span> Ficha RUC</div>
-        <div class="doc-item"><span class="doc-icon">🖼️</span> Logotipo PNG o AI (alta calidad)</div>
-        <div class="doc-item" style="grid-column:1/-1"><span class="doc-icon">📸</span> 3–4 fotos representativas de local/productos/servicios · preferiblemente horizontales</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--text2);">✓ Contrato de afiliación firmado</div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--text2);">✓ Ficha de afiliación completa</div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--text2);">✓ Ficha RUC</div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--text2);">✓ Logotipo PNG o AI (alta calidad)</div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--text2);">✓ 3–4 fotos representativas (preferiblemente horizontales)</div>
       </div>
     </div>
   </div>
 
   <div class="connector">↓</div>
 
-  <!-- COORDINACIONES INTERNAS PARALELO -->
-  <div class="parallel-container" id="ph2">
-    <div class="parallel-header-bar" onclick="toggleParallel()">
-      <span>⚡</span>
-      <span>Etapa 2 · Coordinaciones internas — acciones en paralelo</span>
-      <span id="parallel-toggle-icon" style="margin-left:auto;font-size:14px">▾</span>
+  <!-- PASO 2 - PARALELO -->
+  <div class="phase open" id="ph2">
+    <div class="phase-header" onclick="togglePhase('ph2')">
+      <div class="phase-num" style="background:rgba(251,146,60,0.15);color:var(--orange)">⚡</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Etapa 2 · Coordinaciones internas — acciones en paralelo</div>
+      </div>
+      <div class="phase-toggle">▾</div>
     </div>
-    <div id="parallel-body">
-    <div class="parallel-cols">
-      <!-- COL IZQ: Diseño, Gerencia, Contabilidad -->
-      <div class="parallel-col">
-        <div class="parallel-col-title">
-          <div class="parallel-dot" style="background:var(--accent)"></div>
-          Coordinaciones internas
+    <div class="phase-body">
+      <div class="task" id="t1" style="border-left-color:var(--accent)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(124,106,247,0.15)">🎨</div>
+          <div class="task-main">
+            <div class="task-title">Solicitar arte a Diseño</div>
+            <div class="task-to">→ <span class="person-name">Miroslav Muic</span> · <span class="email-tag">mmuic@promotick.com</span></div>
+          </div>
         </div>
-        <div class="tasks">
-
-          <!-- Diseño -->
-          <div class="task" id="t1" style="border-left-color:var(--accent)">
-            <div class="task-header">
-              <div class="task-icon" style="background:rgba(124,106,247,0.15)">🎨</div>
-              <div class="task-main">
-                <div class="task-title">Solicitar arte a Diseño</div>
-                <div class="task-to">→ <span class="person-name">Miroslav Muic</span> · <span class="email-tag">mmuic@promotick.com</span></div>
-              </div>
-            </div>
-            <button class="task-expand-btn" onclick="toggleTask('t1')">Ver detalles ▾</button>
-            <div class="task-details">
-              <ul class="detail-list">
-                <li>Adjuntar <strong>logo</strong> e <strong>imagen de background</strong></li>
-                <li>Considerar puntos del <strong>Excel de seguimiento</strong></li>
-                <li>Si es <strong>giftcard de experiencia</strong>: agregar la frase correspondiente</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Gerencia -->
-          <div class="task" id="t2" style="border-left-color:var(--green)">
-            <div class="task-header">
-              <div class="task-icon" style="background:rgba(52,211,153,0.15)">📋</div>
-              <div class="task-main">
-                <div class="task-title">Solicitar contrato firmado</div>
-                <div class="task-to">→ <span class="person-name">Juan Francisco Franco</span> · <span class="email-tag">jfranco@promotick.com</span></div>
-              </div>
-            </div>
-            <button class="task-expand-btn" onclick="toggleTask('t2')">Ver detalles ▾</button>
-            <div class="task-details">
-              <ul class="detail-list">
-                <li>Adjuntar contrato e indicar el <strong>giro del negocio</strong></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Contabilidad -->
-          <div class="task" id="t3" style="border-left-color:var(--blue)">
-            <div class="task-header">
-              <div class="task-icon" style="background:rgba(96,165,250,0.15)">💰</div>
-              <div class="task-main">
-                <div class="task-title">Solicitar código cliente</div>
-                <div class="task-to">→ <span class="person-name">Antonio Ortiz</span> · <span class="email-tag">aortiz@promotick.com</span></div>
-              </div>
-            </div>
-            <button class="task-expand-btn" onclick="toggleTask('t3')">Ver detalles ▾</button>
-            <div class="task-details">
-              <ul class="detail-list">
-                <li>Adjuntar ficha de afiliación o <strong>RUC con razón social</strong></li>
-                <li>Indicar qué <strong>correo para facturas</strong></li>
-                <li>Sumar el código en la ficha del comercio</li>
-              </ul>
-            </div>
-          </div>
+        <button class="task-expand-btn" onclick="toggleTask('t1')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Adjuntar <strong>logo</strong> e <strong>imagen de background</strong></li>
+            <li>Considerar puntos del <strong>Excel de seguimiento</strong></li>
+            <li>Si es <strong>giftcard de experiencia</strong>: agregar la frase correspondiente</li>
+          </ul>
         </div>
       </div>
 
-      <!-- COL DER: Capacitación -->
-      <div class="parallel-col">
-        <div class="parallel-col-title">
-          <div class="parallel-dot" style="background:var(--yellow)"></div>
-          Capacitación
+      <div class="task" id="t2" style="border-left-color:var(--green)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(52,211,153,0.15)">📋</div>
+          <div class="task-main">
+            <div class="task-title">Solicitar contrato firmado</div>
+            <div class="task-to">→ <span class="person-name">Juan Francisco Franco</span> · <span class="email-tag">jfranco@promotick.com</span></div>
+          </div>
         </div>
-        <div class="tasks">
+        <button class="task-expand-btn" onclick="toggleTask('t2')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Adjuntar contrato e indicar el <strong>giro del negocio</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="t3" style="border-left-color:var(--blue)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(96,165,250,0.15)">💰</div>
+          <div class="task-main">
+            <div class="task-title">Solicitar código cliente</div>
+            <div class="task-to">→ <span class="person-name">Antonio Ortiz</span> · <span class="email-tag">aortiz@promotick.com</span></div>
+          </div>
+        </div>
+        <button class="task-expand-btn" onclick="toggleTask('t3')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Adjuntar ficha de afiliación o <strong>RUC con razón social</strong></li>
+            <li>Indicar qué <strong>correo para facturas</strong></li>
+            <li>Sumar el código en la ficha del comercio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">↓</div>
+
+  <!-- PASO 3 - NETSUITE -->
+  <div class="phase open" id="ph3">
+    <div class="phase-header" onclick="togglePhase('ph3')">
+      <div class="phase-num" style="background:rgba(96,165,250,0.15);color:var(--blue)">3</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Creación de Código NetSuite</div>
+        <div class="phase-subtitle">Crear código en sistema</div>
+      </div>
+      <div class="chip chip-blue">Contabilidad</div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="task" id="t5" style="border-left-color:var(--blue)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(96,165,250,0.15)">💾</div>
+          <div class="task-main">
+            <div class="task-title">Enviar plantilla para creación código NetSuite</div>
+            <div class="task-to">→ <span class="person-name">Nadia Lara</span> · <span class="email-tag">nlara@promotick.com</span></div>
+          </div>
+        </div>
+        <button class="task-expand-btn" onclick="toggleTask('t5')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Adjuntar <strong>plantilla correctamente llenada</strong></li>
+            <li>Indicar datos de la marca y comercio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">↓</div>
+
+  <!-- PASO 4 - COMPRAS -->
+  <div class="phase open" id="ph4">
+    <div class="phase-header" onclick="togglePhase('ph4')">
+      <div class="phase-num" style="background:rgba(251,146,60,0.15);color:var(--orange)">4</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Enviar a Compras - Crear Proveedor</div>
+        <div class="phase-subtitle">Creación de proveedor en sistema</div>
+      </div>
+      <div class="chip chip-orange">Compras</div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="task" id="t6" style="border-left-color:var(--orange)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(251,146,60,0.15)">📦</div>
+          <div class="task-main">
+            <div class="task-title">Crear proveedor en sistema</div>
+            <div class="task-to">→ <span class="person-name">Jennifer Quimis</span> · <span class="email-tag">jquimis@giftealo.com</span></div>
+          </div>
+        </div>
+        <button class="task-expand-btn" onclick="toggleTask('t6')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Adjuntar <strong>ficha de proveedor</strong> completamente llenada</li>
+            <li>Indicar datos de la marca y contactos</li>
+            <li>Solicitar confirmación de creación</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector">↓</div>
+
+  <!-- PASO 5 - PARALELO -->
+  <div class="phase open" id="ph5">
+    <div class="phase-header" onclick="togglePhase('ph5')">
+      <div class="phase-num" style="background:rgba(244,114,182,0.15);color:var(--pink)">⚡</div>
+      <div class="phase-title-wrap">
+        <div class="phase-title">Etapa 5 · Envío a Operaciones — Acciones en paralelo</div>
+      </div>
+      <div class="phase-toggle">▾</div>
+    </div>
+    <div class="phase-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <!-- Columna Izquierda: Operaciones -->
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:6px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--pink)"></div>
+            Envío a Operaciones
+          </div>
+          <div class="task" id="t7" style="border-left-color:var(--pink)">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(244,114,182,0.15)">👥</div>
+              <div class="task-main">
+                <div class="task-title">Contactos principales</div>
+              </div>
+            </div>
+            <button class="task-expand-btn" onclick="toggleTask('t7')">Ver detalles ▾</button>
+            <div class="task-details">
+              <ul class="detail-list">
+                <li><span class="person-name">Jane Ancajima</span> · <span class="email-tag">jancajima@promotick.com</span></li>
+                <li><span class="person-name">Fabián Arevalo</span> · <span class="email-tag">farevalo@promotick.com</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="task" id="t8" style="border-left-color:var(--pink);margin-top:10px;">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(244,114,182,0.15); opacity: 0.6;">📋</div>
+              <div class="task-main">
+                <div class="task-title">En copia</div>
+              </div>
+            </div>
+            <button class="task-expand-btn" onclick="toggleTask('t8')">Ver detalles ▾</button>
+            <div class="task-details">
+              <ul class="detail-list">
+                <li><span class="person-name">Karla Bazán</span> · <span class="email-tag">kbazan@promotick.com</span></li>
+                <li><span class="person-name">Junior Morales</span> · <span class="email-tag">jmorales@promotick.com</span></li>
+                <li><span class="person-name">Nadia Lara</span> · <span class="email-tag">nlara@promotick.com</span></li>
+                <li><span class="person-name">Guadalupe Villacis</span> · <span class="email-tag">gvillacis@promotick.com</span></li>
+                <li><span class="person-name">Glenda Lopez</span> · <span class="email-tag">glopez@promotick.com</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="task" id="t9" style="border-left-color:var(--pink);margin-top:10px;">
+            <div class="task-header">
+              <div class="task-icon" style="background:rgba(244,114,182,0.15)">📁</div>
+              <div class="task-main">
+                <div class="task-title">Documentos a enviar</div>
+              </div>
+            </div>
+            <button class="task-expand-btn" onclick="toggleTask('t9')">Ver detalles ▾</button>
+            <div class="task-details">
+              <ul class="detail-list">
+                <li>Ficha de afiliación</li>
+                <li>Ficha RUC</li>
+                <li>Arte diseño (logo y background)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Capacitación -->
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:6px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--yellow)"></div>
+            Capacitación
+          </div>
           <div class="task" id="t4" style="border-left-color:var(--yellow)">
             <div class="task-header">
               <div class="task-icon" style="background:rgba(251,191,36,0.15)">🎓</div>
               <div class="task-main">
-                <div class="task-title">Coordinar capacitación</div>
-                <div class="task-to">→ <span>Operaciones</span></div>
+                <div class="task-title">Coordinar capacitación con el comercio</div>
+                <div class="task-to">→ <span>Operaciones</span> (solo para marcas propias)</div>
               </div>
             </div>
             <button class="task-expand-btn" onclick="toggleTask('t4')">Ver detalles ▾</button>
@@ -512,86 +561,14 @@
         </div>
       </div>
     </div>
-    </div>
   </div>
 
   <div class="connector">↓</div>
 
-  <!-- PASO 3 -->
-  <div class="phase open" id="ph3">
-    <div class="phase-header" onclick="togglePhase('ph3')">
-      <div class="phase-num" style="background:rgba(244,114,182,0.15);color:var(--pink)">3</div>
-      <div class="phase-title-wrap">
-        <div class="phase-title">Envío de documentación a Operaciones</div>
-        <div class="phase-subtitle">Consolidar y coordinar con el equipo</div>
-      </div>
-      <div class="chip chip-pink">Operaciones</div>
-      <div class="phase-toggle">▾</div>
-    </div>
-    <div class="phase-body">
-      <div class="tasks">
-
-        <div class="task" id="t5" style="border-left-color:var(--pink)">
-          <div class="task-header">
-            <div class="task-icon" style="background:rgba(244,114,182,0.15)">👥</div>
-            <div class="task-main">
-              <div class="task-title">Contactos principales</div>
-            </div>
-          </div>
-          <button class="task-expand-btn" onclick="toggleTask('t5')">Ver detalles ▾</button>
-          <div class="task-details">
-            <ul class="detail-list">
-              <li><span class="person-name">Jane Ancajima</span> · <span class="email-tag">jancajima@promotick.com</span></li>
-              <li><span class="person-name">Fabián Arevalo</span> · <span class="email-tag">farevalo@promotick.com</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="task" id="t6" style="border-left-color:var(--pink)">
-          <div class="task-header">
-            <div class="task-icon" style="background:rgba(244,114,182,0.15)">📋</div>
-            <div class="task-main">
-              <div class="task-title">En copia</div>
-            </div>
-          </div>
-          <button class="task-expand-btn" onclick="toggleTask('t6')">Ver detalles ▾</button>
-          <div class="task-details">
-            <ul class="detail-list">
-              <li><span class="person-name">Karla Bazán</span> · <span class="email-tag">kbazan@promotick.com</span></li>
-              <li><span class="person-name">Junior Morales</span> · <span class="email-tag">jmorales@promotick.com</span></li>
-              <li><span class="person-name">Nadia Lara</span> · <span class="email-tag">nlara@promotick.com</span></li>
-              <li><span class="person-name">Guadalupe Villacis</span> · <span class="email-tag">gvillacis@promotick.com</span></li>
-              <li><span class="person-name">Glenda Lopez</span> · <span class="email-tag">glopez@promotick.com</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="task" id="t7" style="border-left-color:var(--pink)">
-          <div class="task-header">
-            <div class="task-icon" style="background:rgba(244,114,182,0.15)">📁</div>
-            <div class="task-main">
-              <div class="task-title">Documentos a enviar</div>
-            </div>
-          </div>
-          <button class="task-expand-btn" onclick="toggleTask('t7')">Ver detalles ▾</button>
-          <div class="task-details">
-            <ul class="detail-list">
-              <li>Ficha de afiliación</li>
-              <li>Ficha RUC</li>
-              <li>Arte diseño (logo y background)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="connector">↓</div>
-
-  <!-- PASO 4 -->
-  <div class="phase open" id="ph4">
-    <div class="phase-header" onclick="togglePhase('ph4')">
-      <div class="phase-num" style="background:rgba(248,113,113,0.15);color:var(--red)">4</div>
+  <!-- PASO 6 -->
+  <div class="phase open" id="ph6">
+    <div class="phase-header" onclick="togglePhase('ph6')">
+      <div class="phase-num" style="background:rgba(248,113,113,0.15);color:var(--red)">6</div>
       <div class="phase-title-wrap">
         <div class="phase-title">Activación de marca</div>
         <div class="phase-subtitle">Confirmar en sistema y coordinar gift cards</div>
@@ -600,42 +577,39 @@
       <div class="phase-toggle">▾</div>
     </div>
     <div class="phase-body">
-      <div class="tasks">
-
-        <div class="task" id="t8" style="border-left-color:var(--red)">
-          <div class="task-header">
-            <div class="task-icon" style="background:rgba(248,113,113,0.15)">✅</div>
-            <div class="task-main">
-              <div class="task-title">Requisitos previos</div>
-            </div>
-          </div>
-          <button class="task-expand-btn" onclick="toggleTask('t8')">Ver detalles ▾</button>
-          <div class="task-details">
-            <ul class="detail-list">
-              <li>Marca capacitada con el comercio</li>
-              <li>Información relevante entregada</li>
-              <li>Operaciones confirmó creación en sistema</li>
-            </ul>
+      <div class="task" id="t10" style="border-left-color:var(--red)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(248,113,113,0.15)">✅</div>
+          <div class="task-main">
+            <div class="task-title">Requisitos previos</div>
           </div>
         </div>
+        <button class="task-expand-btn" onclick="toggleTask('t10')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Marca capacitada con el comercio</li>
+            <li>Información relevante entregada</li>
+            <li>Operaciones confirmó creación en sistema</li>
+          </ul>
+        </div>
+      </div>
 
-        <div class="task" id="t9" style="border-left-color:var(--red)">
-          <div class="task-header">
-            <div class="task-icon" style="background:rgba(248,113,113,0.15)">🎁</div>
-            <div class="task-main">
-              <div class="task-title">Coordinar gift cards</div>
-              <div class="task-to">→ <span class="person-name">Nadia Lara</span> · <span class="email-tag">nlara@promotick.com</span></div>
-            </div>
+      <div class="task" id="t11" style="border-left-color:var(--red)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(248,113,113,0.15)">🎁</div>
+          <div class="task-main">
+            <div class="task-title">Coordinar gift cards para activación en demás catálogos</div>
+            <div class="task-to">→ <span class="person-name">Nadia Lara</span> · <span class="email-tag">nlara@promotick.com</span></div>
           </div>
-          <button class="task-expand-btn" onclick="toggleTask('t9')">Ver detalles ▾</button>
-          <div class="task-details">
-            <ul class="detail-list">
-              <li>Indicar si es <strong>marca propia</strong> o de <strong>terceros</strong></li>
-              <li>Detallar <strong>comisión</strong> (si es experiencia/nominal)</li>
-              <li>Enviar <strong>detalle de gift card</strong></li>
-              <li>Indicar <strong>otros canales de activación</strong></li>
-            </ul>
-          </div>
+        </div>
+        <button class="task-expand-btn" onclick="toggleTask('t11')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Indicar si es <strong>marca propia</strong> o de <strong>terceros</strong></li>
+            <li>Detallar <strong>comisión</strong> (si es experiencia/nominal)</li>
+            <li>Enviar <strong>detalle de gift card</strong></li>
+            <li>Para que <strong>active en demás catálogos de Promotick</strong></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -643,13 +617,13 @@
 
   <div class="connector">↓</div>
 
-  <!-- PASO 5 -->
-  <div class="phase open" id="ph5">
-    <div class="phase-header" onclick="togglePhase('ph5')">
-      <div class="phase-num" style="background:rgba(52,211,153,0.15);color:var(--green)">5</div>
+  <!-- PASO 7 -->
+  <div class="phase open" id="ph7">
+    <div class="phase-header" onclick="togglePhase('ph7')">
+      <div class="phase-num" style="background:rgba(52,211,153,0.15);color:var(--green)">7</div>
       <div class="phase-title-wrap">
-        <div class="phase-title">Completar maestro de marcas</div>
-        <div class="phase-subtitle">Registro en sistema Ecuador</div>
+        <div class="phase-title">Actualizar data interna</div>
+        <div class="phase-subtitle">Registro en sistemas internos</div>
       </div>
       <div class="chip chip-green">Admin</div>
       <div class="phase-toggle">▾</div>
@@ -666,10 +640,10 @@
 
   <div class="connector">↓</div>
 
-  <!-- PASO 6 -->
-  <div class="phase open" id="ph6">
-    <div class="phase-header" onclick="togglePhase('ph6')">
-      <div class="phase-num" style="background:rgba(244,114,182,0.15);color:var(--pink)">6</div>
+  <!-- PASO 8 -->
+  <div class="phase open" id="ph8">
+    <div class="phase-header" onclick="togglePhase('ph8')">
+      <div class="phase-num" style="background:rgba(244,114,182,0.15);color:var(--pink)">8</div>
       <div class="phase-title-wrap">
         <div class="phase-title">Avisar a Marketing</div>
         <div class="phase-subtitle">Bienvenida en redes sociales</div>
@@ -687,10 +661,10 @@
 
   <div class="connector">↓</div>
 
-  <!-- PASO 7 -->
-  <div class="phase open" id="ph7">
-    <div class="phase-header" onclick="togglePhase('ph7')">
-      <div class="phase-num" style="background:rgba(124,106,247,0.15);color:var(--accent2)">7</div>
+  <!-- PASO 9 -->
+  <div class="phase open" id="ph9">
+    <div class="phase-header" onclick="togglePhase('ph9')">
+      <div class="phase-num" style="background:rgba(124,106,247,0.15);color:var(--accent2)">9</div>
       <div class="phase-title-wrap">
         <div class="phase-title">Notificar a Motiva Ecuador</div>
         <div class="phase-subtitle">Marca publicada en catálogo</div>
@@ -699,21 +673,19 @@
       <div class="phase-toggle">▾</div>
     </div>
     <div class="phase-body">
-      <div class="tasks">
-        <div class="task" id="t10" style="border-left-color:var(--accent)">
-          <div class="task-header">
-            <div class="task-icon" style="background:rgba(124,106,247,0.15)">✉️</div>
-            <div class="task-main">
-              <div class="task-title">Contacto externo Motiva</div>
-              <div class="task-to">→ <span class="person-name">Isabel Verastegui</span> · <span class="email-tag">ivelastegui@motivasoluciones.com</span></div>
-            </div>
+      <div class="task" id="t12" style="border-left-color:var(--accent)">
+        <div class="task-header">
+          <div class="task-icon" style="background:rgba(124,106,247,0.15)">✉️</div>
+          <div class="task-main">
+            <div class="task-title">Contacto externo Motiva</div>
+            <div class="task-to">→ <span class="person-name">Isabel Verastegui</span> · <span class="email-tag">ivelastegui@motivasoluciones.com</span></div>
           </div>
-          <button class="task-expand-btn" onclick="toggleTask('t10')">Ver detalles ▾</button>
-          <div class="task-details">
-            <ul class="detail-list">
-              <li>Comunicar que la marca está <strong>publicada en el catálogo</strong></li>
-            </ul>
-          </div>
+        </div>
+        <button class="task-expand-btn" onclick="toggleTask('t12')">Ver detalles ▾</button>
+        <div class="task-details">
+          <ul class="detail-list">
+            <li>Comunicar que la marca está <strong>publicada en el catálogo</strong></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -732,18 +704,6 @@
   function toggleTask(id) {
     const task = document.getElementById(id);
     task.classList.toggle('expanded');
-  }
-
-  function toggleParallel() {
-    const body = document.getElementById('parallel-body');
-    const icon = document.getElementById('parallel-toggle-icon');
-    if (body.style.display === 'none') {
-      body.style.display = 'block';
-      icon.textContent = '▾';
-    } else {
-      body.style.display = 'none';
-      icon.textContent = '▸';
-    }
   }
 </script>
 
